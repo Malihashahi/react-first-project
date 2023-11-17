@@ -9,14 +9,14 @@ class Timer extends React.Component{
   constructor(){
     super();
     this.state={
-      time : new Date().toLocaleTimeString()
+      time :10
     }
   }
 componentDidMount(){
-  console.log("componentDiMount");
+ 
    interval= setInterval(()=>{
     this.setState({
-      time:new Date().toLocaleTimeString()
+      time: this.state.time-1
     })
     },1000);
 }
@@ -24,18 +24,23 @@ componentDidUpdate(){
   console.log("componentDidUpdate");
 }
 componentWillUnmount(){
-  console.log(this.state.time);
+ if (this.state.time == 0){
+ clearInterval(interval);
+ }
 
 }
   render(){
     console.log("componentDiMount");
     return(
+    <>
       <h2 className='timer'>it is
       {
         this.state.time
       }
       
     </h2>
+    <button onClick={this.props.handleSetTitle}>Change</button>
+    </>
     )
 
   }
