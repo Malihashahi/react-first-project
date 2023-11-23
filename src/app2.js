@@ -1,5 +1,5 @@
 
-import React, { useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import './style.css';
@@ -34,15 +34,20 @@ import Timer from './timer';
 
 // }
 const App =()=>{
-
   const [ title, setTitle]=useState("Hi firends");
-  const handleSetTitle= ()=>{
-    setTitle("hello firends")
+  const [ isLight, setIsLight]=useState(false);
+  useEffect(() =>{
+  console.log("useEffect");
+  
+  },[isLight])
+ 
+  const handleIsLight= ()=>{
+    setIsLight(!isLight)
   }
   return(
-        <div className='main'>
+        <div className='main' style={{background:isLight ? "white" :"black"}}>
         <Hello title={title}/>
-        <Timer handleSetTitle={handleSetTitle}/>
+        <Timer isLight={isLight} handleIsLight={handleIsLight}/>
      
       </div>
       )
