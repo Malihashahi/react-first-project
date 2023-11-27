@@ -6,6 +6,7 @@ import './style.css';
 import './style.css';
 import Hello from './hello';
 import Timer from './timer';
+import TimeList from './TimeList';
 
 
 // class App extends React.Component {
@@ -36,9 +37,12 @@ import Timer from './timer';
 const App =()=>{
   const [ title, setTitle]=useState("Hi firends");
   const [ isLight, setIsLight]=useState(false);
+  const [timeArr,setTimeArr]=useState(["00:23:49"]);
   useEffect(() =>{
   console.log("useEffect");
-  
+  return ()=>{
+    
+  }
   },[isLight])
  
   const handleIsLight= ()=>{
@@ -48,6 +52,9 @@ const App =()=>{
         <div className='main' style={{background:isLight ? "white" :"black"}}>
         <Hello title={title}/>
         <Timer isLight={isLight} handleIsLight={handleIsLight}/>
+        <TimeList>
+          {timeArr}
+        </TimeList>
      
       </div>
       )
