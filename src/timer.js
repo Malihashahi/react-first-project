@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import './style.css';
+import TimeList from './TimeList';
 var interval;
 
 
@@ -56,14 +57,24 @@ class Timer extends React.Component{
       second:0,
     })
   }
+handleSaveTime =()=>{
+  let h = this.state.hour
+  let m = this.state.minute
+  let s = this.state.second
+let newTime =  `${h > 9 ? h : "0"+h} : ${m > 9 ? m : "0"+m} : ${s > 9 ? s : "0"+s}`
+this.props.setTimeArr([...this.props.timeArr,newTime])
+
+}
+
 
   render(){
     let h = this.state.hour
     let m = this.state.minute
     let s = this.state.second
+
     return(
       <>
-        <h2 className="timer">
+        <h2 className="timer" onClick={this.handleSaveTime}>
           {`${h > 9 ? h : "0"+h} : ${m > 9 ? m : "0"+m} : ${s > 9 ? s : "0"+s}`}
         </h2>
         <div className="button_box">
@@ -79,6 +90,9 @@ class Timer extends React.Component{
           >{this.props.isLight ?"dark" :"light"}
           </span>
         </div>
+        <TimeList>
+          {this.props.timeArr}
+        </TimeList>
       </>
     )
   }

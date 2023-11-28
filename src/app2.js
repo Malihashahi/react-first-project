@@ -51,10 +51,11 @@ const App =()=>{
   return(
         <div className='main' style={{background:isLight ? "white" :"black"}}>
         <Hello title={title}/>
-        <Timer isLight={isLight} handleIsLight={handleIsLight}/>
-        <TimeList>
-          {timeArr}
-        </TimeList>
+        <Timer
+        timeArr={timeArr}
+        setTimeArr={setTimeArr}
+        isLight={isLight} handleIsLight={handleIsLight}/>
+       
      
       </div>
       )
