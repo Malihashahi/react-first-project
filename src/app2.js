@@ -7,6 +7,7 @@ import './style.css';
 import Hello from './hello';
 import Timer from './timer';
 import TimeList from './TimeList';
+import { TestComtext } from './testcontext';
 
 
 // class App extends React.Component {
@@ -49,15 +50,18 @@ const App =()=>{
     setIsLight(!isLight)
   }
   return(
+       <TestComtext.Provider value={{
+        timeArr:timeArr,
+       setTimeArr:setTimeArr}} >
         <div className='main' style={{background:isLight ? "white" :"black"}}>
         <Hello title={title}/>
         <Timer
-        timeArr={timeArr}
-        setTimeArr={setTimeArr}
+       
         isLight={isLight} handleIsLight={handleIsLight}/>
        
      
       </div>
+      </TestComtext.Provider>
       )
 }
 export default App;
