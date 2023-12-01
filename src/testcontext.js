@@ -1,3 +1,9 @@
 import { createContext } from "react";
 
-export const TestComtext= createContext("white")
+export const TestComtext= createContext({
+  timeArr :[],
+  setTimeArr:()=>{
+    
+  }
+
+})

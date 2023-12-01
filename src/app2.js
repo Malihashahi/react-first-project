@@ -51,15 +51,16 @@ const App =()=>{
   }
   return(
        <TestComtext.Provider value={{
-        timeArr:timeArr,
-       setTimeArr:setTimeArr}} >
+        timeArr,
+       setTimeArr}} >
         <div className='main' style={{background:isLight ? "white" :"black"}}>
         <Hello title={title}/>
         <Timer
        
         isLight={isLight} handleIsLight={handleIsLight}/>
        
-     
+       <TimeList />
+       
       </div>
       </TestComtext.Provider>
       )
